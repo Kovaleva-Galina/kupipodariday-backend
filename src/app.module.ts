@@ -14,8 +14,6 @@ import { OffersModule } from './offers/offers.module';
 import { WishesModule } from './wishes/wishes.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { AuthModule } from './auth/auth.module';
-import { AppService } from './app.service';
-import { AppController } from './app.controller';
 import configuration from './config/config';
 import validate from './config/validate';
 
@@ -61,7 +59,5 @@ import validate from './config/validate';
     WishlistsModule,
     AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
