@@ -1,35 +1,12 @@
 import { Wish } from 'src/wishes/entities/wish.entity';
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  JoinColumn,
-  OneToMany,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Entity, Column, JoinColumn, OneToMany } from 'typeorm';
 import { IsNotEmpty, Length, IsUrl, IsEmail } from 'class-validator';
 import { Offer } from 'src/offers/entities/offer.entity';
 import { Wishlist } from 'src/wishlists/entities/wishlist.entity';
+import { BaseEntity } from '../../common/entities/base.entity';
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @CreateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
-  createdAt: Date;
-
-  @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
-  updatedAt: Date;
-
+export class User extends BaseEntity {
   @Column({ unique: true })
   @Length(2, 30) // Ограничение длины от 2 до 30 символов
   @IsNotEmpty() // Обязательное поле

@@ -1,7 +1,7 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { QueryFailedError, Like } from 'typeorm';
+import { QueryFailedError, ILike } from 'typeorm';
 import { getCols } from '../utils/typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -42,7 +42,10 @@ export class UsersService {
 
   async findMany(query: string) {
     return this.usersRepository.find({
-      where: [{ username: Like(`%${query}%`), email: Like(`%${query}%`) }],
+      where: [
+        { username: ILike(`%${query}%`) },
+        { email: ILike(`%${query}%`) },
+      ],
     });
   }
 
