@@ -1,7 +1,7 @@
 {
   "name": "kupipodariday",
   "version": "0.0.1",
-  "description": "",
+  "description": "Проект 'KupiPodariDay' представляет собой сервис для создания списков желаемых подарков, предложений скинуться на подарок и управления пользователями.",
   "author": "Galina Kovaleva",
   "private": true,
   "license": "UNLICENSED",

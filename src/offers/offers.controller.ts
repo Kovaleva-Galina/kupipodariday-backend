@@ -10,14 +10,14 @@ import {
 import { OffersService } from './offers.service';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { JWTGuard } from '../guards/jwt.guard';
-import { NotOwnerOfferGuard } from '../guards/notOwner.offer.guard';
+import { NotOwnerWishesGuard } from '../guards/notOwner.wishes.guard';
 
 @UseGuards(JWTGuard)
 @Controller('offers')
 export class OffersController {
   constructor(private readonly offersService: OffersService) {}
 
-  @UseGuards(NotOwnerOfferGuard)
+  @UseGuards(NotOwnerWishesGuard)
   @Post()
   create(@Body() createOfferDto: CreateOfferDto, @Req() req) {
     return this.offersService.create(createOfferDto, +req.user.id);
