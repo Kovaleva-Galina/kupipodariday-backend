@@ -27,7 +27,7 @@ export class NotOwnerWishesGuard implements CanActivate {
     const isOwner = await this.wishesService.isOwner(itemId, userId);
 
     if (isOwner) {
-      throw new ForbiddenException();
+      throw new ForbiddenException('Нельзя вносить деньги на свой подарок');
     }
 
     return true;

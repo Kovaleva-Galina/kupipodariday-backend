@@ -117,7 +117,9 @@ export class WishesService {
     const newRaised = wish.raised + raised;
 
     if (wish.price < newRaised) {
-      throw new ForbiddenException();
+      throw new ForbiddenException(
+        'Сумма взноса на подарок превышает требуемую сумму',
+      );
     }
 
     await this.wishesRepository.update({ id: wish.id }, { raised: newRaised });
